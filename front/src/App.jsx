@@ -20,7 +20,7 @@ function App() {
     window.location.href=total.full
   }
   function copyToClipboard() {
-    navigator.clipboard.writeText('http://localhost:8080/h/'+short)
+    navigator.clipboard.writeText(link+'/h/'+short)
       .then(() => {
         alert('Link copied to clipboard!')
       })
