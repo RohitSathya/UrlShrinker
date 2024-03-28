@@ -14,10 +14,19 @@ function App() {
      setshort(data)
    }  
   async function showUrl(){
-    const res2=await axios.post(link+'/geturl',{short:short})
+    const res2=await axios.get(link+`/h/${short}`)
     const {total}=res2.data
     console.log(total.full)
     window.location.href=total.full
+  }
+  function copyToClipboard() {
+    navigator.clipboard.writeText('http://localhost:8080/h/'+short)
+      .then(() => {
+        alert('Link copied to clipboard!')
+      })
+      .catch(err => {
+        console.error('Failed to copy:', err)
+      })
   }
 
   return (
@@ -33,7 +42,12 @@ function App() {
       />
       <button className="submit-btn" onClick={submitUrl}>Shorten</button>
       {short === '' ? null : (
-        <p className="short-url" onClick={showUrl}>{short}</p>
+        <div>
+           <p className="short-url" onClick={showUrl}>{short}</p>
+        <button className="copy-btn" onClick={copyToClipboard}>Copy</button>
+          
+        </div>
+       
       )}
     </div>
     </>
