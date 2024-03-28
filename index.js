@@ -15,14 +15,17 @@ app.post('/posturl',async(req,res)=>{
     res.json({data:data.short})
 
 })
-app.post('/geturl',async(req,res)=>{
-    const {short}=req.body
-    const findurl=await url.findOne({short:short})
-    res.json({total:findurl})
-    console.log(findurl)
-})
-app.get('/:id',async(req,res)=>{
+// app.post('/geturl',async(req,res)=>{
+//     const {short}=req.body
+//     const findurl=await url.findOne({short:short})
+//     res.json({total:findurl})
+//     console.log(findurl)
+// })
+app.get('/h/:id',async(req,res)=>{
+    console.log(req.params.id)
     const findurl2=await url.findOne({short:req.params.id})
+   
+//    res.json({total:findurl2})
    res.redirect(findurl2.full)
 })
 
