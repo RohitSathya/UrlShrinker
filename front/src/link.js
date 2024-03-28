@@ -1,2 +1,2 @@
-const link='http://192.168.0.137:8080'
+const link='https://url-shrinker-sepia.vercel.app'
 export default link;
